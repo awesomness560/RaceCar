@@ -5,12 +5,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jduxr"]
 size = Vector2(613, 249)
 
-[node name="Road" type="Area2D" groups=["Road"]]
+[node name="Road" type="Area2D" groups=["road"]]
 visibility_layer = 2
 position = Vector2(1, -5)
 
 [node name="RoadTest" type="CollisionShape2D" parent="."]
-position = Vector2(769, 17)
+position = Vector2(769, 13)
 shape = SubResource("RectangleShape2D_jduxr")
 debug_color = Color(0.676741, 0.497155, 0.260898, 0.42)
 

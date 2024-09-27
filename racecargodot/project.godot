@@ -38,8 +38,8 @@ folder_colors={
 
 [global_group]
 
-Road=""
-Player=""
+road=""
+player=""
 
 [input]
 

@@ -11,13 +11,16 @@ z_index = -2
 position = Vector2(745, 325)
 texture = ExtResource("2_aqbvq")
 
-[node name="Road" parent="." groups=["Road"] instance=ExtResource("3_sk7i2")]
+[node name="Road" parent="." groups=["road"] instance=ExtResource("3_sk7i2")]
 z_index = 1
 position = Vector2(501, 167)
 
-[node name="Road2" parent="." groups=["Road"] instance=ExtResource("3_sk7i2")]
+[node name="Road2" parent="." groups=["road"] instance=ExtResource("3_sk7i2")]
 z_index = 1
 position = Vector2(491, 573)
+
+[node name="Road3" parent="." groups=["road"] instance=ExtResource("3_sk7i2")]
+position = Vector2(1194, 390)
 
 [node name="Player" parent="." instance=ExtResource("1_bvang")]
 z_index = 2
@@ -26,5 +29,3 @@ steering_angle = 30
 
 [connection signal="body_shape_entered" from="Road" to="Player" method="_on_road_body_shape_entered"]
 [connection signal="body_shape_exited" from="Road" to="Player" method="_on_road_body_shape_exited"]
-[connection signal="body_shape_entered" from="Road2" to="Player" method="_on_road_body_shape_entered"]
-[connection signal="body_shape_exited" from="Road2" to="Player" method="_on_road_body_shape_exited"]
