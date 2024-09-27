@@ -106,3 +106,16 @@ func apply_friction():
 	var friction_force = velocity * friction
 	var drag_force = velocity * velocity.length() * drag
 	acceleration += drag_force + friction_force
+
+
+func _on_road_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	engine_power = 1600
+	boostSpeed = 4000
+	braking = -900
+	max_speed_reversed = 500
+	
+func _on_road_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	engine_power = 800
+	boostSpeed = 2000
+	braking = -450
+	max_speed_reversed = 250

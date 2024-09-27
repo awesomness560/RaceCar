@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cle1pbps02a4x"]
+
+[ext_resource type="Texture2D" uid="uid://c6qsqhqrqd8u4" path="res://Assets/icon.svg" id="1_cenqt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jduxr"]
+size = Vector2(613, 249)
+
+[node name="Road" type="Area2D" groups=["Road"]]
+visibility_layer = 2
+position = Vector2(1, -5)
+
+[node name="RoadTest" type="CollisionShape2D" parent="."]
+position = Vector2(769, 17)
+shape = SubResource("RectangleShape2D_jduxr")
+debug_color = Color(0.676741, 0.497155, 0.260898, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="RoadTest"]
+z_index = -1
+position = Vector2(2, -2)
+scale = Vector2(4.7793, 1.94922)
+texture = ExtResource("1_cenqt")
