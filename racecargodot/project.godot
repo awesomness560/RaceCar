@@ -36,6 +36,11 @@ folder_colors={
 "res://Components/": "blue"
 }
 
+[global_group]
+
+Road=""
+Player=""
+
 [input]
 
 steer_left={
