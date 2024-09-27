@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+#TODO: Need to add a bar that will stop you from boosting when you run out of boost
 
 var wheel_base = 70
 @export var steering_angle = 15
@@ -14,12 +15,27 @@ var drag = -0.001
 @export var traction_slow = 0.7
 @export var whenDrifting = 0.01 ##The amount of traction we have while holding down the drift button
 
+@export_group("Boost Settings")
+@export var boostSteeringAngle = 5 ##The limited steering angle when boosting
+@export var boostSpeed = 2000 ##The amount of power that is applied when you accelerate while boosting
+@export var boostZoom = 0.4
+
 @export_group("References")
 @export var driftParticles : GPUParticles2D
+@export var boostParticles : GPUParticles2D
+@export var camera : Camera2D
 
 var acceleration = Vector2.ZERO
-var steer_direction 
+var steer_direction
+
+var originalCameraZoom : Vector2
+var cameraTween : Tween
+
 var isDrifting : bool = false
+var isBoosting : bool = false
+
+func _ready() -> void:
+	originalCameraZoom = camera.zoom
 
 func _physics_process(delta):
 	acceleration = Vector2.ZERO
@@ -31,11 +47,18 @@ func _physics_process(delta):
 	move_and_slide()
 
 func get_input():
+	isBoosting = Input.is_action_pressed("boost")
+	
 	var turn = Input.get_action_strength("steer_right") - Input.get_action_strength("steer_left")
 	steer_direction = turn * deg_to_rad(steering_angle)
+	if isBoosting:
+		steer_direction = turn * deg_to_rad(boostSteeringAngle)
 	
 	if Input.is_action_pressed("accelerate"):
 		acceleration = transform.x * engine_power
+		
+		if isBoosting:
+			acceleration = transform.x * boostSpeed
 	if Input.is_action_pressed("reverse"):
 		acceleration = transform.x * braking
 	
@@ -43,6 +66,19 @@ func get_input():
 
 func toggleEffects():
 	driftParticles.emitting = isDrifting
+	boostParticles.emitting = isBoosting
+	
+	if isBoosting:
+		setCameraZoom(boostZoom)
+	elif not isBoosting and camera.zoom != originalCameraZoom:
+		setCameraZoom(originalCameraZoom.x)
+
+func setCameraZoom(zoom : float) -> void:
+	if cameraTween:
+		cameraTween.kill()
+	
+	cameraTween = create_tween()
+	cameraTween.tween_property(camera, "zoom", Vector2(zoom, zoom), 0.2)
 
 func calculate_steering(delta):
 	var rear_wheel = position - transform.x * wheel_base/2.0
