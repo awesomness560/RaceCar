@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://csbesgpj5ehjw"]
+
+[ext_resource type="Script" path="res://Components/UI/PauseMenu/pause_menu.gd" id="1_m1ctm"]
+[ext_resource type="PackedScene" uid="uid://drwyf7qg5a8pj" path="res://Components/UI/PauseMenu/settings.tscn" id="2_4n5mc"]
+
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("buttonsMenu", "settingsMenu")]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m1ctm")
+buttonsMenu = NodePath("Buttons")
+settingsMenu = NodePath("Settings")
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -97.0
+offset_right = 132.0
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Resume" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Settings" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Settings" parent="." instance=ExtResource("2_4n5mc")]
+visible = false
+layout_mode = 1
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.227451, 0.227451, 0.227451, 0.67451)
+
+[connection signal="pressed" from="Buttons/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Buttons/Settings" to="." method="_on_settings_pressed"]
