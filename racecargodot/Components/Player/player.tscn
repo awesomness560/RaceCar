@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=3 uid="uid://f3m2x66012u8"]
+
+[ext_resource type="Script" path="res://Components/Player/player.gd" id="1_q1741"]
+[ext_resource type="Texture2D" uid="uid://edq7x7pljqnf" path="res://Assets/Particles/fire_01.png" id="2_7ohmi"]
+[ext_resource type="Texture2D" uid="uid://7e16iqow768g" path="res://Assets/Particles/smoke_07.png" id="2_lssa7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i1bq3"]
+radius = 20.0
+height = 78.0
+
+[sub_resource type="Gradient" id="Gradient_ap450"]
+offsets = PackedFloat32Array(0, 0.25, 0.618852, 1)
+colors = PackedColorArray(0, 0.486928, 0.882587, 1, 0.759373, 0.300629, 1.92523e-07, 1, 0.913704, 0.378919, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cxybv"]
+gradient = SubResource("Gradient_ap450")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ismva"]
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 720.0
+direction = Vector3(-1, 0, 0)
+spread = 15.0
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+gravity = Vector3(0, -30, 0)
+scale_min = 0.1
+scale_max = 0.2
+color_ramp = SubResource("GradientTexture1D_cxybv")
+
+[sub_resource type="Gradient" id="Gradient_1ynvl"]
+offsets = PackedFloat32Array(0, 0.536885, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1smmp"]
+gradient = SubResource("Gradient_1ynvl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wmiji"]
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 720.0
+direction = Vector3(-1, 0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, -30, 0)
+scale_min = 0.1
+scale_max = 0.2
+color_ramp = SubResource("GradientTexture1D_1smmp")
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("driftParticles", "boostParticles", "camera")]
+script = ExtResource("1_q1741")
+driftParticles = NodePath("DriftParticles")
+boostParticles = NodePath("BoostParticles")
+camera = NodePath("Camera2D")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 78.0
+offset_bottom = 40.0
+color = Color(0.923431, 0.411815, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(39, 20)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_i1bq3")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(41, 20)
+zoom = Vector2(0.5, 0.5)
+
+[node name="BoostParticles" type="GPUParticles2D" parent="."]
+position = Vector2(-11, 21)
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_ismva")
+texture = ExtResource("2_7ohmi")
+lifetime = 0.4
+
+[node name="DriftParticles" type="GPUParticles2D" parent="."]
+position = Vector2(-12, 20)
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_wmiji")
+texture = ExtResource("2_lssa7")

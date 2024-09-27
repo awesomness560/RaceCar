@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://w1b2meqk1bce"]
+
+[ext_resource type="PackedScene" uid="uid://f3m2x66012u8" path="res://Components/Player/player.tscn" id="1_bvang"]
+[ext_resource type="Texture2D" uid="uid://7mphnt55krh1" path="res://Assets/TemplateGrid_albedo.png" id="2_aqbvq"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_bvang")]
+position = Vector2(84, 41)
+steering_angle = 30
+
+[node name="TemplateGridAlbedo" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(745, 325)
+texture = ExtResource("2_aqbvq")
