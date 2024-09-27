@@ -14,6 +14,9 @@ var drag = -0.001
 @export var traction_slow = 0.7
 @export var whenDrifting = 0.01 ##The amount of traction we have while holding down the drift button
 
+@export_group("References")
+@export var driftParticles : GPUParticles2D
+
 var acceleration = Vector2.ZERO
 var steer_direction 
 var isDrifting : bool = false
@@ -23,6 +26,7 @@ func _physics_process(delta):
 	get_input()
 	apply_friction()
 	calculate_steering(delta)
+	toggleEffects()
 	velocity += acceleration * delta
 	move_and_slide()
 
@@ -36,6 +40,9 @@ func get_input():
 		acceleration = transform.x * braking
 	
 	isDrifting = Input.is_action_pressed("drift")
+
+func toggleEffects():
+	driftParticles.emitting = isDrifting
 
 func calculate_steering(delta):
 	var rear_wheel = position - transform.x * wheel_base/2.0

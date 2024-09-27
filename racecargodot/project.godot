@@ -27,7 +27,8 @@ enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
 [file_customization]
 
 folder_colors={
-"res://Assets/": "red"
+"res://Assets/": "red",
+"res://Components/": "blue"
 }
 
 [input]
