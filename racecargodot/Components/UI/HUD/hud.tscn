@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://mmtt08q3veuh"]
+
+[ext_resource type="PackedScene" uid="uid://csbesgpj5ehjw" path="res://Components/UI/PauseMenu/pause_menu.tscn" id="1_dxiay"]
+[ext_resource type="Script" path="res://Components/UI/HUD/speedrun_timer.gd" id="2_ng1vr"]
+[ext_resource type="PackedScene" uid="uid://on3u3aieb3j2" path="res://Components/UI/HUD/nitro_bar.tscn" id="3_1awk6"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="PauseMenu" parent="." instance=ExtResource("1_dxiay")]
+
+[node name="SpeedrunTimer" type="Label" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0.537255, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "23.56"
+script = ExtResource("2_ng1vr")
+
+[node name="NitroBar" parent="." instance=ExtResource("3_1awk6")]
