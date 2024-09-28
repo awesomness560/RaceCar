@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://f3m2x66012u8"]
+[gd_scene load_steps=13 format=3 uid="uid://f3m2x66012u8"]
 
 [ext_resource type="Script" path="res://Components/Player/player.gd" id="1_q1741"]
-[ext_resource type="Texture2D" uid="uid://5w5juu43udfk" path="res://Assets/Particles/fire_01.png" id="2_7ohmi"]
-[ext_resource type="Texture2D" uid="uid://dlh4ag8pkjxp1" path="res://Assets/Particles/smoke_07.png" id="2_lssa7"]
-[ext_resource type="PackedScene" uid="uid://csbesgpj5ehjw" path="res://Components/UI/PauseMenu/pause_menu.tscn" id="4_8cq7m"]
-[ext_resource type="Script" path="res://Components/UI/HUD/speedrun_timer.gd" id="5_p2vx0"]
+[ext_resource type="Texture2D" uid="uid://edq7x7pljqnf" path="res://Assets/Particles/fire_01.png" id="2_7ohmi"]
+[ext_resource type="Texture2D" uid="uid://7e16iqow768g" path="res://Assets/Particles/smoke_07.png" id="2_lssa7"]
+[ext_resource type="PackedScene" uid="uid://mmtt08q3veuh" path="res://Components/UI/HUD/hud.tscn" id="4_olpel"]
 
 [sub_resource type="Gradient" id="Gradient_ap450"]
 offsets = PackedFloat32Array(0, 0.25, 0.618852, 1)
@@ -55,11 +54,12 @@ height = 78.0
 radius = 20.0
 height = 78.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("driftParticles", "boostParticles", "camera")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("driftParticles", "boostParticles", "camera", "nitroBar")]
 script = ExtResource("1_q1741")
 driftParticles = NodePath("DriftParticles")
 boostParticles = NodePath("BoostParticles")
 camera = NodePath("Camera2D")
+nitroBar = NodePath("HUD/NitroBar")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 78.0
@@ -97,24 +97,9 @@ position = Vector2(39, 20)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_6fnhn")
 
-[node name="HUD" type="CanvasLayer" parent="."]
-
-[node name="PauseMenu" parent="HUD" instance=ExtResource("4_8cq7m")]
-
-[node name="SpeedrunTimer" type="Label" parent="HUD"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = -23.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0.537255, 1, 1)
-theme_override_font_sizes/font_size = 40
-text = "23.56"
-script = ExtResource("5_p2vx0")
+[node name="HUD" parent="." instance=ExtResource("4_olpel")]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+
+[editable path="HUD"]
