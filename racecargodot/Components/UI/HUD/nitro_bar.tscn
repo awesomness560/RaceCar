@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://on3u3aieb3j2"]
+
+[ext_resource type="Script" path="res://Components/UI/HUD/nitro_bar.gd" id="1_t5flf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u38oq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qlqc1"]
+bg_color = Color(1.92523e-07, 0.629809, 0.979531, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5668h"]
+bg_color = Color(0.237539, 0.237539, 0.237539, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jliax"]
+bg_color = Color(0.906795, 0.401086, 0, 1)
+
+[node name="NitroBar" type="ProgressBar" node_paths=PackedStringArray("feedbackBar", "timer")]
+z_index = 1
+offset_right = 544.0
+offset_bottom = 51.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_u38oq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qlqc1")
+value = 40.0
+show_percentage = false
+script = ExtResource("1_t5flf")
+feedbackBar = NodePath("FeedbackBar")
+timer = NodePath("Timer")
+
+[node name="FeedbackBar" type="ProgressBar" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_5668h")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jliax")
+value = 80.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true

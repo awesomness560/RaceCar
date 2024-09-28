@@ -14,40 +14,53 @@ var drag = -0.001
 @export var traction_fast = 0.1 ##The traction we have at high speeds
 @export var traction_slow = 0.7
 @export var whenDrifting = 0.01 ##The amount of traction we have while holding down the drift button
+@export var driftSpeedPenalty : float = 200
 
 @export_group("Boost Settings")
 @export var boostSteeringAngle = 5 ##The limited steering angle when boosting
 @export var boostSpeed = 2000 ##The amount of power that is applied when you accelerate while boosting
 @export var boostZoom = 0.4
+@export_subgroup("Nitro")
+@export var maxNitro = 100 ##The max amount of nitro you can hold
+@export var nitroGainRate : float = 10
+@export var nitroLoseRate : float = 15
 
 @export_group("References")
 @export var driftParticles : GPUParticles2D
 @export var boostParticles : GPUParticles2D
 @export var camera : Camera2D
+@export var nitroBar : NitroBar
 
 var acceleration = Vector2.ZERO
 var steer_direction
+var currentNitro : float = 100
+
+var currentSpeedPenalty : float = 0
 
 var originalCameraZoom : Vector2
 var cameraTween : Tween
 
 var isDrifting : bool = false
 var isBoosting : bool = false
+var canBoost : bool = true
 
 func _ready() -> void:
 	originalCameraZoom = camera.zoom
+	nitroBar.initNitro(maxNitro)
 
-func _physics_process(delta):
+func _physics_process(delta : float) -> void:
 	acceleration = Vector2.ZERO
 	get_input()
 	apply_friction()
 	calculate_steering(delta)
-	toggleEffects()
+	toggleEffects(delta)
 	velocity += acceleration * delta
 	move_and_slide()
 
 func get_input():
-	isBoosting = Input.is_action_pressed("boost")
+	canBoost = nitroBar.nitro > 0
+	
+	isBoosting = Input.is_action_pressed("boost") and canBoost
 	
 	var turn = Input.get_action_strength("steer_right") - Input.get_action_strength("steer_left")
 	steer_direction = turn * deg_to_rad(steering_angle)
@@ -55,7 +68,7 @@ func get_input():
 		steer_direction = turn * deg_to_rad(boostSteeringAngle)
 	
 	if Input.is_action_pressed("accelerate"):
-		acceleration = transform.x * engine_power
+		acceleration = transform.x * (engine_power - currentSpeedPenalty)
 		
 		if isBoosting:
 			acceleration = transform.x * boostSpeed
@@ -64,12 +77,16 @@ func get_input():
 	
 	isDrifting = Input.is_action_pressed("drift")
 
-func toggleEffects():
+func toggleEffects(delta : float):
 	driftParticles.emitting = isDrifting
 	boostParticles.emitting = isBoosting
 	
+	if isDrifting and not isBoosting:
+		nitroBar.nitro += delta * nitroGainRate
+	
 	if isBoosting:
 		setCameraZoom(boostZoom)
+		nitroBar.nitro -= delta * nitroLoseRate
 	elif not isBoosting and camera.zoom != originalCameraZoom:
 		setCameraZoom(originalCameraZoom.x)
 
@@ -92,6 +109,9 @@ func calculate_steering(delta):
 		traction = traction_fast
 	if isDrifting:
 		traction = whenDrifting
+		currentSpeedPenalty = driftSpeedPenalty
+	else:
+		currentSpeedPenalty = 0
 	
 	var d = new_heading.dot(velocity.normalized())
 	if d > 0:
