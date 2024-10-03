@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 #TODO: Need to add a bar that will stop you from boosting when you run out of boost
 
