@@ -137,6 +137,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area.is_in_group("road"):
 		engine_power = 800
-		boostSpeed = 2000
+		boostSpeed = 2500
 		braking = -450
 		max_speed_reversed = 250
