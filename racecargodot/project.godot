@@ -27,7 +27,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/controller_icons/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/controller_icons/plugin.cfg", "res://addons/rmsmartshape/plugin.cfg")
 
 [file_customization]
 
@@ -38,8 +38,8 @@ folder_colors={
 
 [global_group]
 
-Road=""
-Player=""
+road=""
+player=""
 
 [input]
 
