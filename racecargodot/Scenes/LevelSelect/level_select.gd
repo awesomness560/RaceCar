@@ -14,9 +14,14 @@ func _ready() -> void:
 		button.levelIcon.texture = level.levelImage
 		button.levelLabel.text = level.levelName
 		
+		button.pressed.connect(goToLeaderboard.bind("Yo"))
+		
 		levelContainer.add_child(button)
 		
 		#button.pressed.connect()
+
+func goToLeaderboard(levelName : String):
+	print(levelName)
 
 func dir_levels(path : String):
 	var dir = DirAccess.open(path)
