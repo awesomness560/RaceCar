@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://dk21ciqx436yh"]
+
+[ext_resource type="Script" path="res://Components/UI/FinishedMenu/finished_menu.gd" id="1_v26li"]
+[ext_resource type="PackedScene" uid="uid://dgygkbtm0burn" path="res://addons/quiver_leaderboards/leaderboard_ui.tscn" id="2_80rw8"]
+[ext_resource type="PackedScene" uid="uid://3gmhx81rpbcl" path="res://Scenes/main_menu.tscn" id="2_heipu"]
+
+[node name="FinishedMenu" type="CanvasLayer" node_paths=PackedStringArray("timeLabel")]
+visible = false
+script = ExtResource("1_v26li")
+timeLabel = NodePath("ScoreVBox/ScoreLabel")
+mainMenuScene = ExtResource("2_heipu")
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.227451, 0.227451, 0.227451, 0.67451)
+
+[node name="ScoreVBox" type="VBoxContainer" parent="."]
+offset_left = 123.0
+offset_top = 121.0
+offset_right = 392.0
+offset_bottom = 373.0
+alignment = 1
+
+[node name="Header" type="Label" parent="ScoreVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Time: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="ScoreVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "23.96"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LeaderboardUI" parent="." instance=ExtResource("2_80rw8")]
+offset_left = 506.0
+offset_top = 74.0
+offset_right = -37.0
+offset_bottom = -83.0
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+offset_left = 83.0
+offset_top = 406.0
+offset_right = 415.0
+offset_bottom = 548.0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="TryAgain" type="Button" parent="Buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Try Again"
+
+[node name="BackToMenu" type="Button" parent="Buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Back to main menu"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="Buttons/TryAgain" to="." method="_on_try_again_pressed"]
+[connection signal="pressed" from="Buttons/BackToMenu" to="." method="_on_back_to_menu_pressed"]

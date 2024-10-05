@@ -1,0 +1,186 @@
+[gd_scene load_steps=8 format=3 uid="uid://3gmhx81rpbcl"]
+
+[ext_resource type="Script" path="res://addons/simple-gui-transitions/transition.gd" id="1_ek1il"]
+[ext_resource type="Script" path="res://Scenes/LevelSelect/level_select.gd" id="2_j2m80"]
+[ext_resource type="Script" path="res://Scenes/menu.gd" id="2_o0vf7"]
+[ext_resource type="PackedScene" uid="uid://ddtat4ss08wmg" path="res://Components/UI/level_button.tscn" id="3_hcckx"]
+[ext_resource type="Script" path="res://Scenes/leaderboard.gd" id="4_ja4qg"]
+[ext_resource type="PackedScene" uid="uid://dgygkbtm0burn" path="res://addons/quiver_leaderboards/leaderboard_ui.tscn" id="5_sudxw"]
+[ext_resource type="PackedScene" uid="uid://drwyf7qg5a8pj" path="res://Components/UI/PauseMenu/settings.tscn" id="7_pqnvf"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelTransition" type="Node" parent="."]
+script = ExtResource("1_ek1il")
+animation_enter = 0
+animation_leave = 0
+layout = NodePath("../LevelSelect")
+layout_id = "LevelSelect"
+
+[node name="SettingsTransition" type="Node" parent="."]
+script = ExtResource("1_ek1il")
+animation_enter = 0
+animation_leave = 0
+layout = NodePath("../Settings")
+layout_id = "Settings"
+
+[node name="LeaderboardTransition" type="Node" parent="."]
+script = ExtResource("1_ek1il")
+animation_enter = 0
+layout = NodePath("../Leaderboard")
+layout_id = "Leaderboard"
+
+[node name="MainMenuTransition" type="Node" parent="."]
+script = ExtResource("1_ek1il")
+layout = NodePath("../Menu")
+layout_id = "MainMenu"
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_o0vf7")
+
+[node name="GameName" type="Label" parent="Menu"]
+layout_mode = 2
+offset_left = 347.0
+offset_top = 143.0
+offset_right = 805.0
+offset_bottom = 198.0
+theme_override_font_sizes/font_size = 40
+text = "Enter Game Name Here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -174.0
+offset_top = -100.5
+offset_right = 174.0
+offset_bottom = 100.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="Menu/Buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Play
+"
+
+[node name="Settings" type="Button" parent="Menu/Buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Settings
+"
+
+[node name="QuitGame" type="Button" parent="Menu/Buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Quit Game"
+
+[node name="UsernameField" type="LineEdit" parent="Menu"]
+layout_mode = 0
+offset_left = 308.0
+offset_top = 197.0
+offset_right = 854.0
+offset_bottom = 247.0
+theme_override_colors/font_placeholder_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Enter Username Here"
+alignment = 1
+
+[node name="LevelSelect" type="Control" parent="." node_paths=PackedStringArray("levelContainer")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_j2m80")
+levelResourcesFolder = "res://Resources/Levels"
+levelButton = ExtResource("3_hcckx")
+levelContainer = NodePath("PanelContainer/MarginContainer/LevelsContainer")
+
+[node name="PanelContainer" type="PanelContainer" parent="LevelSelect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -495.0
+offset_top = -260.0
+offset_right = 495.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelSelect/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="LevelsContainer" type="HFlowContainer" parent="LevelSelect/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Leaderboard" type="Control" parent="." node_paths=PackedStringArray("levelButton")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_ja4qg")
+levelButton = NodePath("LevelButton")
+
+[node name="StartButton" type="Button" parent="Leaderboard"]
+layout_mode = 0
+offset_left = 213.0
+offset_top = 362.0
+offset_right = 374.0
+offset_bottom = 412.0
+theme_override_font_sizes/font_size = 30
+text = "Start Level"
+
+[node name="LevelButton" parent="Leaderboard" instance=ExtResource("3_hcckx")]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 103.0
+offset_right = 420.0
+offset_bottom = 331.0
+
+[node name="LeaderboardUI" parent="Leaderboard" instance=ExtResource("5_sudxw")]
+layout_mode = 1
+offset_left = 570.0
+offset_top = 40.0
+offset_right = -32.0
+offset_bottom = -65.0
+
+[node name="Settings" parent="." instance=ExtResource("7_pqnvf")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="Menu/Buttons/PlayButton" to="Menu" method="_on_play_button_pressed"]
+[connection signal="pressed" from="Menu/Buttons/Settings" to="Menu" method="_on_settings_pressed"]
+[connection signal="pressed" from="Menu/Buttons/QuitGame" to="Menu" method="_on_quit_game_pressed"]
+[connection signal="text_changed" from="Menu/UsernameField" to="Menu" method="_on_line_edit_text_changed"]
+[connection signal="pressed" from="Leaderboard/StartButton" to="Leaderboard" method="_on_start_button_pressed"]
