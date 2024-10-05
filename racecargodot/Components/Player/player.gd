@@ -31,6 +31,7 @@ var drag = -0.001
 @export var boostParticles : GPUParticles2D
 @export var camera : Camera2D
 @export var nitroBar : NitroBar
+@export var hud : CanvasLayer
 
 var acceleration = Vector2.ZERO
 var steer_direction
@@ -48,6 +49,7 @@ var canBoost : bool = true
 func _ready() -> void:
 	originalCameraZoom = camera.zoom
 	nitroBar.initNitro(maxNitro)
+	Global.finished.connect(onFinish)
 
 func _physics_process(delta : float) -> void:
 	acceleration = Vector2.ZERO
@@ -127,6 +129,9 @@ func apply_friction():
 	var friction_force = velocity * friction
 	var drag_force = velocity * velocity.length() * drag
 	acceleration += drag_force + friction_force
+
+func onFinish():
+	hud.hide()
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("road"):

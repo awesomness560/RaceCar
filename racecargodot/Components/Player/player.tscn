@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://f3m2x66012u8"]
+[gd_scene load_steps=16 format=3 uid="uid://f3m2x66012u8"]
 
 [ext_resource type="Script" path="res://Components/Player/player.gd" id="1_q1741"]
-[ext_resource type="Texture2D" uid="uid://ci7wgm2q7oegk" path="res://Assets/Particles/fire_01.png" id="2_7ohmi"]
-[ext_resource type="Texture2D" uid="uid://d3iwbb7dj7ler" path="res://Assets/Particles/smoke_07.png" id="2_lssa7"]
+[ext_resource type="Texture2D" uid="uid://edq7x7pljqnf" path="res://Assets/Particles/fire_01.png" id="2_7ohmi"]
+[ext_resource type="Texture2D" uid="uid://7e16iqow768g" path="res://Assets/Particles/smoke_07.png" id="2_lssa7"]
 [ext_resource type="PackedScene" uid="uid://mmtt08q3veuh" path="res://Components/UI/HUD/hud.tscn" id="4_olpel"]
-[ext_resource type="Texture2D" uid="uid://c3f2rp0nqn481" path="res://Components/Player/player.png" id="5_j8leq"]
+[ext_resource type="Texture2D" uid="uid://fbtkc5wt40t4" path="res://Components/Player/player.png" id="5_j8leq"]
+[ext_resource type="PackedScene" uid="uid://dk21ciqx436yh" path="res://Components/UI/FinishedMenu/finished_menu.tscn" id="6_wn4rj"]
 
 [sub_resource type="Gradient" id="Gradient_ap450"]
 offsets = PackedFloat32Array(0, 0.25, 0.618852, 1)
@@ -55,13 +56,16 @@ height = 78.0
 radius = 20.0
 height = 78.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("driftParticles", "boostParticles", "camera", "nitroBar")]
+[sub_resource type="SpriteFrames" id="SpriteFrames_dqth4"]
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("driftParticles", "boostParticles", "camera", "nitroBar", "hud")]
 scale = Vector2(1.00643, 1)
 script = ExtResource("1_q1741")
 driftParticles = NodePath("DriftParticles")
 boostParticles = NodePath("BoostParticles")
 camera = NodePath("Camera2D")
 nitroBar = NodePath("HUD/NitroBar")
+hud = NodePath("HUD")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 78.0
@@ -88,12 +92,13 @@ process_material = SubResource("ParticleProcessMaterial_wmiji")
 texture = ExtResource("2_lssa7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.993608, -22)
+position = Vector2(-0.993608, 1)
 rotation = 1.5708
 scale = Vector2(4.57699, 4.88)
 shape = SubResource("CapsuleShape2D_i1bq3")
 
 [node name="Area2D" type="Area2D" parent="." groups=["player"]]
+visible = false
 position = Vector2(-190, -115)
 scale = Vector2(4.91428, 4.70464)
 
@@ -104,12 +109,16 @@ shape = SubResource("CapsuleShape2D_6fnhn")
 
 [node name="HUD" parent="." instance=ExtResource("4_olpel")]
 
-[node name="PauseMenu" parent="HUD" index="0"]
-visible = true
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 23)
 rotation = 1.5708
+scale = Vector2(0.80977, 0.794324)
 texture = ExtResource("5_j8leq")
+
+[node name="Player" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dqth4")
+
+[node name="FinishedMenu" parent="." instance=ExtResource("6_wn4rj")]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
