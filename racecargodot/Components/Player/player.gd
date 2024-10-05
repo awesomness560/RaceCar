@@ -4,7 +4,7 @@ class_name Player
 #TODO: Need to add a bar that will stop you from boosting when you run out of boost
 
 var wheel_base = 70
-@export var steering_angle = 15
+@export var steering_angle = 10
 @export var engine_power = 800 ##The speed at which you move forward
 @export var friction = -0.9
 var drag = -0.001
