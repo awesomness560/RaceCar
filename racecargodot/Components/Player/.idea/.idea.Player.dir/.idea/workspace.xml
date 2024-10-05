@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="15cd968e-78e1-40bb-9471-6f01c875049a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.Player.dir/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.Player.dir/.idea/indexLayout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.Player.dir/.idea/projectSettingsUpdater.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.Player.dir/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../addons/Todo_Manager/.idea/.idea.Todo_Manager.dir/.idea/projectSettingsUpdater.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../addons/Todo_Manager/.idea/.idea.Todo_Manager.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/player.gd" beforeDir="false" afterPath="$PROJECT_DIR$/player.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/player.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/player.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Road.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/../../Road.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test_scene.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/../../test_scene.tscn" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2mfcrFd1Hzw0P0ZiuSo26SWYUhm" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Aakash&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;/Users/aakashbhagavathi/Library/Application Support/JetBrains/Rider2024.1/resharper-host/DecompilerCache&quot;,
+      &quot;/Users/aakashbhagavathi/Library/Application Support/JetBrains/Rider2024.1/resharper-host/SourcesCache&quot;,
+      &quot;/Users/aakashbhagavathi/Library/Application Support/Symbols/src&quot;
+    ]
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="15cd968e-78e1-40bb-9471-6f01c875049a" name="Changes" comment="" />
+      <created>1727471293018</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1727471293018</updated>
+      <workItem from="1727790728189" duration="639000" />
+      <workItem from="1727793519607" duration="1056000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>
