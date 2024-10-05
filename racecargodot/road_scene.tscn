@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point_array.gd" id="5_2u5on"]
 [ext_resource type="Script" path="res://addons/rmsmartshape/materials/edge_material_metadata.gd" id="6_mrx36"]
 [ext_resource type="Script" path="res://addons/rmsmartshape/materials/edge_material.gd" id="7_k3tdv"]
-[ext_resource type="Texture2D" uid="uid://dv2fg58r3ppm5" path="res://Assets/roadweb.jpg" id="8_sq3m7"]
+[ext_resource type="Texture2D" uid="uid://b5lfd4mxcon7b" path="res://Assets/roadweb.jpg" id="8_sq3m7"]
 [ext_resource type="Script" path="res://addons/rmsmartshape/normal_range.gd" id="9_kot3n"]
 [ext_resource type="Script" path="res://addons/rmsmartshape/materials/shape_material.gd" id="10_kov01"]
 [ext_resource type="Script" path="res://checkpoint_1.gd" id="12_j2dih"]
@@ -27,7 +27,7 @@ point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
 properties = SubResource("Resource_30uy8")
 
-[sub_resource type="Resource" id="Resource_omojt"]
+[sub_resource type="Resource" id="Resource_lwy6s"]
 script = ExtResource("3_rt7md")
 texture_idx = 0
 flip = false
@@ -38,9 +38,9 @@ script = ExtResource("4_cx5nr")
 position = Vector2(-217.535, -175.915)
 point_in = Vector2(-83.1679, 210.303)
 point_out = Vector2(83.1679, -210.303)
-properties = SubResource("Resource_omojt")
+properties = SubResource("Resource_lwy6s")
 
-[sub_resource type="Resource" id="Resource_htjdv"]
+[sub_resource type="Resource" id="Resource_d3fro"]
 script = ExtResource("3_rt7md")
 texture_idx = 0
 flip = false
@@ -51,9 +51,9 @@ script = ExtResource("4_cx5nr")
 position = Vector2(233.83, -447.569)
 point_in = Vector2(-93.5444, -7.1272)
 point_out = Vector2(93.5444, 7.1272)
-properties = SubResource("Resource_htjdv")
+properties = SubResource("Resource_d3fro")
 
-[sub_resource type="Resource" id="Resource_ub5hy"]
+[sub_resource type="Resource" id="Resource_sargh"]
 script = ExtResource("3_rt7md")
 texture_idx = 0
 flip = false
@@ -64,9 +64,9 @@ script = ExtResource("4_cx5nr")
 position = Vector2(587.642, -227.01)
 point_in = Vector2(-200.452, 162.144)
 point_out = Vector2(200.452, -162.144)
-properties = SubResource("Resource_ub5hy")
+properties = SubResource("Resource_sargh")
 
-[sub_resource type="Resource" id="Resource_imnmi"]
+[sub_resource type="Resource" id="Resource_5klkx"]
 script = ExtResource("3_rt7md")
 texture_idx = 0
 flip = false
@@ -77,7 +77,7 @@ script = ExtResource("4_cx5nr")
 position = Vector2(878.995, -116.826)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
-properties = SubResource("Resource_imnmi")
+properties = SubResource("Resource_5klkx")
 
 [sub_resource type="Resource" id="Resource_aib5q"]
 script = ExtResource("5_2u5on")
@@ -152,7 +152,6 @@ size = Vector2(529.5, 20)
 [node name="Player" parent="." instance=ExtResource("3_8qvqm")]
 z_index = 2
 position = Vector2(81, 40)
-steering_angle = 30
 
 [node name="Road" type="Area2D" parent="."]
 script = ExtResource("2_dcsvt")

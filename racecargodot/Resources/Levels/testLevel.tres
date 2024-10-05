@@ -7,3 +7,4 @@
 script = ExtResource("1_yrmsy")
 levelName = "TestLevel"
 levelImage = ExtResource("1_iavmy")
+leaderboardID = "racecar-level1-kujT"
