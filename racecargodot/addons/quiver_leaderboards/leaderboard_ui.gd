@@ -38,6 +38,9 @@ extends Control
 
 func _ready() -> void:
 	Global.levelChanged.connect(whenLevelChanges)
+	Global.finished.connect(onFinished)
+	if Global.currentLevel:
+		leaderboard_id = Global.currentLevel.leaderboardID
 	
 	score_list.set_column_expand_ratio(1, 3)
 	var column_names := ["Rank", "Name", "Score"]
@@ -48,6 +51,9 @@ func _ready() -> void:
 		column_index += 1
 	if leaderboard_id:
 		refresh_scores()
+
+func onFinished():
+	refresh_scores()
 
 func whenLevelChanges():
 	leaderboard_id = Global.currentLevel.leaderboardID
@@ -76,7 +82,24 @@ func refresh_scores():
 			var row: TreeItem = score_list.create_item(root)
 			row.set_text(0, str(score["rank"]))
 			row.set_text(1, str(score["name"]))
-			row.set_text(2, str(score["score"]))
+			
+			var time : float = score["score"]
+			
+			var mils = fmod(time,1)*100
+			var secs = fmod(time,60)
+			var mins = fmod(time, 60*60) / 60
+			
+			var time_passed : String
+	
+			if mils == 0:
+				time_passed = "%02d : %02d : 00" % [mins,secs]
+			else:
+				time_passed = "%02d : %02d : %02d" % [mins,secs,mils]
+			
+			if mins < 1:
+				time_passed = time_passed.right(-4)
+			
+			row.set_text(2, time_passed)
 			if score["is_current_player"]:
 				for i in range(3):
 					row.set_custom_bg_color(i, current_player_highlight_color)

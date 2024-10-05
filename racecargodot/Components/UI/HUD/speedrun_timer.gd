@@ -3,8 +3,9 @@ extends Label
 var time : float
  
 func _physics_process(delta):
-	time += delta
-	update_ui()
+	if not Global.isFinished:
+		time += delta
+		update_ui()
 	
 func update_ui():
 	var mils = fmod(time,1)*100
@@ -22,3 +23,4 @@ func update_ui():
 		time_passed = time_passed.right(-4)
 	
 	text = time_passed
+	Global.currentTime = time

@@ -93,6 +93,17 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Quit Game"
 
+[node name="UsernameField" type="LineEdit" parent="Menu"]
+layout_mode = 0
+offset_left = 308.0
+offset_top = 197.0
+offset_right = 854.0
+offset_bottom = 247.0
+theme_override_colors/font_placeholder_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Enter Username Here"
+alignment = 1
+
 [node name="LevelSelect" type="Control" parent="." node_paths=PackedStringArray("levelContainer")]
 visible = false
 layout_mode = 1
@@ -171,4 +182,5 @@ layout_mode = 1
 [connection signal="pressed" from="Menu/Buttons/PlayButton" to="Menu" method="_on_play_button_pressed"]
 [connection signal="pressed" from="Menu/Buttons/Settings" to="Menu" method="_on_settings_pressed"]
 [connection signal="pressed" from="Menu/Buttons/QuitGame" to="Menu" method="_on_quit_game_pressed"]
+[connection signal="text_changed" from="Menu/UsernameField" to="Menu" method="_on_line_edit_text_changed"]
 [connection signal="pressed" from="Leaderboard/StartButton" to="Leaderboard" method="_on_start_button_pressed"]

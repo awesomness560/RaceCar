@@ -12,5 +12,4 @@ func whenLeaderboardChanges():
 
 
 func _on_start_button_pressed() -> void:
-	Global.nickname = "Dumb"
-	Global.logScore(23.3)
+	get_tree().change_scene_to_packed(Global.currentLevel.levelScene)
