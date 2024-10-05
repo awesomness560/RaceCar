@@ -19,6 +19,7 @@ config/icon="res://Assets/icon.svg"
 
 ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
 GuiTransitions="*res://addons/simple-gui-transitions/singleton.gd"
+Global="*res://global.gd"
 
 [display]
 
