@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://f3m2x66012u8"]
+[gd_scene load_steps=17 format=3 uid="uid://f3m2x66012u8"]
 
 [ext_resource type="Script" path="res://Components/Player/player.gd" id="1_q1741"]
 [ext_resource type="Texture2D" uid="uid://5w5juu43udfk" path="res://Assets/Particles/fire_01.png" id="2_7ohmi"]
@@ -57,6 +57,9 @@ radius = 20.0
 height = 78.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dqth4"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_lo8a5"]
+loop = false
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("driftParticles", "boostParticles", "camera", "nitroBar", "hud")]
 scale = Vector2(1.00643, 1)
@@ -119,6 +122,9 @@ texture = ExtResource("5_j8leq")
 sprite_frames = SubResource("SpriteFrames_dqth4")
 
 [node name="FinishedMenu" parent="." instance=ExtResource("6_wn4rj")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamPlaylist_lo8a5")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
