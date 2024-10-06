@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cle1pbps02a4x"]
 
-[ext_resource type="Texture2D" uid="uid://cqobot4puwb3q" path="res://Components/Roads/straight_road.png" id="1_pejvs"]
+[ext_resource type="Texture2D" uid="uid://bcv0m5ehbde62" path="res://Components/Roads/straight_road.png" id="1_pejvs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jduxr"]
 size = Vector2(1127.5, 453.5)
