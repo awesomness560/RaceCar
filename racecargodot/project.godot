@@ -11,17 +11,17 @@ config_version=5
 [application]
 
 config/name="RaceCarGodot"
-run/main_scene="res://test_scene.tscn"
+run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://Assets/icon.svg"
 
 [autoload]
 
 ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
-GuiTransitions="*res://addons/simple-gui-transitions/singleton.gd"
 Global="*res://global.gd"
 Leaderboards="*res://addons/quiver_leaderboards/leaderboards.tscn"
 PlayerAccounts="*res://addons/quiver_player_accounts/player_accounts.tscn"
+GuiTransitions="*res://addons/simple-gui-transitions/singleton.gd"
 Menu="*res://Scenes/main_menu.gd"
 
 [display]
