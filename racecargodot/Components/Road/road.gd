@@ -11,11 +11,11 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		body.engine_power += speedIncrease
 		body.boostSpeed += 3000
-		body.driftSpeedPenalty += 1300
+		body.driftSpeedPenalty += 800
 
 
 func _on_body_exited(body: Node2D) -> void:
 	if body is Player:
 		body.engine_power -= speedIncrease
 		body.boostSpeed -= 3000
-		body.driftSpeedPenalty -= 1300
+		body.driftSpeedPenalty -= 800
