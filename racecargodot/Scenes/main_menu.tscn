@@ -174,13 +174,6 @@ offset_left = 570.0
 offset_top = 40.0
 offset_right = -32.0
 offset_bottom = -65.0
-leaderboard_id = null
-score_filter = null
-score_offset = null
-score_limit = null
-nearby_count = null
-nearby_anchor = null
-current_player_highlight_color = null
 
 [node name="Settings" parent="." instance=ExtResource("7_pqnvf")]
 visible = false
