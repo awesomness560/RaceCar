@@ -18,14 +18,14 @@ var drag = -0.001
 @export var driftSpeedPenalty : float = 200
 
 @export_group("Boost Settings")
-@export var boostSteeringAngle = 4 ##The limited steering angle when boosting
+@export var boostSteeringAngle = 1 ##The limited steering angle when boosting
 @export var boostSpeed = 3000 ##The amount of power that is applied when you accelerate while boosting
 @export var boostZoom = 0.4
 @export_subgroup("Nitro")
 @export var maxNitro = 100 ##The max amount of nitro you can hold
-@export var passiveNitroGain : float = 10
-@export var nitroGainRate : float = 20
-@export var nitroLoseRate : float = 30
+@export var passiveNitroGain : float = 5
+@export var nitroGainRate : float = 10
+@export var nitroLoseRate : float = 25
 
 @export_group("References")
 @export var driftParticles : GPUParticles2D
