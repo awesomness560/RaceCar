@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://cmo35t07oph26"]
+[gd_scene load_steps=118 format=3 uid="uid://cmo35t07oph26"]
 
 [ext_resource type="Script" path="res://Components/Road/road.gd" id="2_dcsvt"]
 [ext_resource type="Script" path="res://addons/rmsmartshape/shapes/shape_open.gd" id="2_ld4al"]
@@ -18,7 +18,10 @@
 [ext_resource type="Script" path="res://checkpoint_3.gd" id="13_444hd"]
 [ext_resource type="Script" path="res://checkpoint_2.gd" id="13_fe5d3"]
 [ext_resource type="PackedScene" uid="uid://ddrbgbmaer2lu" path="res://Components/Roads/finish_line.tscn" id="14_gh7rt"]
-[ext_resource type="PackedScene" uid="uid://5ct6pf3dnmwh" path="res://fork.tscn" id="19_k4wug"]
+[ext_resource type="PackedScene" uid="uid://cq78mwabcvmsh" path="res://fork.tscn" id="19_k4wug"]
+[ext_resource type="PackedScene" uid="uid://cql3eb82m1qg3" path="res://Spoon.tscn" id="20_315dt"]
+[ext_resource type="PackedScene" uid="uid://be5jxo4ff7v6k" path="res://Plate.tscn" id="21_wvs3p"]
+[ext_resource type="PackedScene" uid="uid://dyuhbuqovhd3b" path="res://puddle.tscn" id="22_qa21e"]
 
 [sub_resource type="Resource" id="Resource_30uy8"]
 script = ExtResource("3_rt7md")
@@ -788,3 +791,17 @@ scale = Vector2(3.345, 3.345)
 [node name="Fork" parent="." instance=ExtResource("19_k4wug")]
 position = Vector2(-6860, -1609)
 rotation = -0.936841
+
+[node name="Fork2" parent="." instance=ExtResource("19_k4wug")]
+position = Vector2(-9640, 29.0004)
+rotation = 5.79061
+
+[node name="Spoon" parent="." instance=ExtResource("20_315dt")]
+position = Vector2(-6575, -1338)
+rotation = 2.25839
+
+[node name="Plate" parent="." instance=ExtResource("21_wvs3p")]
+position = Vector2(-5384, 11384)
+
+[node name="Puddle" parent="." instance=ExtResource("22_qa21e")]
+position = Vector2(-1635, -5587)

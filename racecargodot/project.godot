@@ -23,6 +23,7 @@ Leaderboards="*res://addons/quiver_leaderboards/leaderboards.tscn"
 PlayerAccounts="*res://addons/quiver_player_accounts/player_accounts.tscn"
 GuiTransitions="*res://addons/simple-gui-transitions/singleton.gd"
 Menu="*res://Scenes/main_menu.gd"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [display]
 

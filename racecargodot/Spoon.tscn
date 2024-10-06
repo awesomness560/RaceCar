@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://flp0nuuibvju"]
+[gd_scene load_steps=2 format=3 uid="uid://cql3eb82m1qg3"]
 
 [ext_resource type="Texture2D" uid="uid://d0oi2f5bt3f2y" path="res://Assets/Spoon.png" id="1_it83g"]
 
 [node name="Spoon" type="Node2D"]
+scale = Vector2(4, 4)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
