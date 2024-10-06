@@ -4,12 +4,12 @@ class_name Player
 #TODO: Need to add a bar that will stop you from boosting when you run out of boost
 
 var wheel_base = 70
-@export var steering_angle = 15
-@export var engine_power = 800 ##The speed at which you move forward
+@export var steering_angle = 6
+@export var engine_power = 400 ##The speed at which you move forward
 @export var friction = -0.9
 var drag = -0.001
-@export var braking = -450 ##The speed at which you move backward
-@export var max_speed_reversed = 250 ##The speed limiter/penalty for moving backward
+@export var braking = -900 ##The speed at which you move backward
+@export var max_speed_reversed = 500 ##The speed limiter/penalty for moving backward
 @export_group("Drift Settings")
 @export var slip_speed = 400 ##The speed we need to be going for us to start sliding
 @export var traction_fast = 0.1 ##The traction we have at high speeds
@@ -18,13 +18,14 @@ var drag = -0.001
 @export var driftSpeedPenalty : float = 200
 
 @export_group("Boost Settings")
-@export var boostSteeringAngle = 5 ##The limited steering angle when boosting
-@export var boostSpeed = 2000 ##The amount of power that is applied when you accelerate while boosting
+@export var boostSteeringAngle = 1 ##The limited steering angle when boosting
+@export var boostSpeed = 3000 ##The amount of power that is applied when you accelerate while boosting
 @export var boostZoom = 0.4
 @export_subgroup("Nitro")
 @export var maxNitro = 100 ##The max amount of nitro you can hold
+@export var passiveNitroGain : float = 5
 @export var nitroGainRate : float = 10
-@export var nitroLoseRate : float = 15
+@export var nitroLoseRate : float = 25
 
 @export_group("References")
 @export var driftParticles : GPUParticles2D
@@ -32,6 +33,8 @@ var drag = -0.001
 @export var camera : Camera2D
 @export var nitroBar : NitroBar
 @export var hud : CanvasLayer
+@export var audioPlayer : AudioStreamPlayer2D
+@export var turnNode : Node2D
 
 var acceleration = Vector2.ZERO
 var steer_direction
@@ -41,17 +44,23 @@ var currentSpeedPenalty : float = 0
 
 var originalCameraZoom : Vector2
 var cameraTween : Tween
+var carSounds : AudioStreamInteractive
+var currentSound : String
 
 var isDrifting : bool = false
 var isBoosting : bool = false
 var canBoost : bool = true
 
 func _ready() -> void:
+	carSounds = audioPlayer.stream 
+	audioPlayer.play()
+	print(audioPlayer.stream)
 	originalCameraZoom = camera.zoom
 	nitroBar.initNitro(maxNitro)
 	Global.finished.connect(onFinish)
 
 func _physics_process(delta : float) -> void:
+	currentSound = audioPlayer["parameters/switch_to_clip"]
 	acceleration = Vector2.ZERO
 	get_input()
 	apply_friction()
@@ -71,27 +80,40 @@ func get_input():
 		steer_direction = turn * deg_to_rad(boostSteeringAngle)
 	
 	if Input.is_action_pressed("accelerate"):
+		if currentSound != "forward":
+			audioPlayer["parameters/switch_to_clip"] = "forward"
 		acceleration = transform.x * (engine_power - currentSpeedPenalty)
 		
 		if isBoosting:
 			acceleration = transform.x * boostSpeed
 	if Input.is_action_pressed("reverse"):
+		if currentSound != "back":
+			audioPlayer["parameters/switch_to_clip"] = "back"
 		acceleration = transform.x * braking
 	
 	isDrifting = Input.is_action_pressed("drift")
 
 func toggleEffects(delta : float):
+	var camOffset : Vector2 = camera.offset.lerp(velocity, delta * 1)
+	camOffset.x = clampf(camOffset.x, -500, 500)
+	camOffset.y = clampf(camOffset.y, -500, 500)
+	camera.offset = camOffset
 	driftParticles.emitting = isDrifting
 	boostParticles.emitting = isBoosting
 	
 	if isDrifting and not isBoosting:
-		nitroBar.nitro += delta * nitroGainRate
+		nitroBar.nitro += delta * (nitroGainRate + passiveNitroGain)
+		steering_angle = 10
 	
+	if not isDrifting:
+		steering_angle = 6
+		
 	if isBoosting:
 		setCameraZoom(boostZoom)
 		nitroBar.nitro -= delta * nitroLoseRate
 	elif not isBoosting and camera.zoom != originalCameraZoom:
 		setCameraZoom(originalCameraZoom.x)
+		nitroBar.nitro += delta * passiveNitroGain
 
 func setCameraZoom(zoom : float) -> void:
 	if cameraTween:
