@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://w1b2meqk1bce"]
 
 [ext_resource type="PackedScene" uid="uid://f3m2x66012u8" path="res://Components/Player/player.tscn" id="1_bvang"]
-[ext_resource type="Texture2D" uid="uid://cjquh3gp2t5u1" path="res://Assets/TemplateGrid_albedo.png" id="2_aqbvq"]
+[ext_resource type="Texture2D" uid="uid://cd38k6t6dwk4" path="res://Assets/TemplateGrid_albedo.png" id="2_aqbvq"]
 [ext_resource type="PackedScene" uid="uid://cle1pbps02a4x" path="res://Road.tscn" id="3_sk7i2"]
 
-[node name="TestScene" type="Node2D"]
+[node name="TestScene2" type="Node2D"]
 
 [node name="TemplateGridAlbedo" type="Sprite2D" parent="."]
 z_index = -2
