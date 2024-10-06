@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cmo35t07oph26"]
+[gd_scene load_steps=30 format=3 uid="uid://cmo35t07oph26"]
 
 [ext_resource type="Script" path="res://Components/Road/road.gd" id="2_dcsvt"]
 [ext_resource type="Script" path="res://addons/rmsmartshape/shapes/shape_open.gd" id="2_ld4al"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://addons/rmsmartshape/materials/shape_material.gd" id="10_kov01"]
 [ext_resource type="Script" path="res://checkpoint_1.gd" id="12_j2dih"]
 [ext_resource type="Script" path="res://checkpoint_2.gd" id="13_fe5d3"]
+[ext_resource type="PackedScene" uid="uid://ddrbgbmaer2lu" path="res://Components/Roads/finish_line.tscn" id="14_gh7rt"]
 
 [sub_resource type="Resource" id="Resource_30uy8"]
 script = ExtResource("3_rt7md")
@@ -22,61 +23,61 @@ width = 1.0
 
 [sub_resource type="Resource" id="Resource_w8uw7"]
 script = ExtResource("4_cx5nr")
-position = Vector2(-1048.54, 7.03827)
+position = Vector2(-866.933, 21.6335)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
 properties = SubResource("Resource_30uy8")
 
-[sub_resource type="Resource" id="Resource_omojt"]
+[sub_resource type="Resource" id="Resource_v8seu"]
 script = ExtResource("3_rt7md")
 texture_idx = 0
 flip = false
 width = 1.0
 
-[sub_resource type="Resource" id="Resource_nyqi6"]
+[sub_resource type="Resource" id="Resource_1dk87"]
 script = ExtResource("4_cx5nr")
-position = Vector2(-100.735, -160.523)
-point_in = Vector2(-83.1679, 210.303)
-point_out = Vector2(83.1679, -210.303)
-properties = SubResource("Resource_omojt")
-
-[sub_resource type="Resource" id="Resource_ub5hy"]
-script = ExtResource("3_rt7md")
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id="Resource_2gxpl"]
-script = ExtResource("4_cx5nr")
-position = Vector2(124.011, -930.412)
-point_in = Vector2(-234.355, 103.03)
-point_out = Vector2(200.452, -162.144)
-properties = SubResource("Resource_ub5hy")
-
-[sub_resource type="Resource" id="Resource_rjdrg"]
-script = ExtResource("3_rt7md")
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id="Resource_3l73f"]
-script = ExtResource("4_cx5nr")
-position = Vector2(666.106, -1219.6)
+position = Vector2(746.582, 18.1426)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
-properties = SubResource("Resource_rjdrg")
+properties = SubResource("Resource_v8seu")
+
+[sub_resource type="Resource" id="Resource_wmgbe"]
+script = ExtResource("3_rt7md")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_8xlvs"]
+script = ExtResource("4_cx5nr")
+position = Vector2(1250.38, -313.165)
+point_in = Vector2(14.3837, 400.702)
+point_out = Vector2(-14.3837, -400.702)
+properties = SubResource("Resource_wmgbe")
+
+[sub_resource type="Resource" id="Resource_m75ac"]
+script = ExtResource("3_rt7md")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_twflt"]
+script = ExtResource("4_cx5nr")
+position = Vector2(967.501, -767.197)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_m75ac")
 
 [sub_resource type="Resource" id="Resource_aib5q"]
 script = ExtResource("5_2u5on")
 _points = {
 0: SubResource("Resource_w8uw7"),
-1: SubResource("Resource_nyqi6"),
-3: SubResource("Resource_2gxpl"),
-13: SubResource("Resource_3l73f")
+10: SubResource("Resource_1dk87"),
+11: SubResource("Resource_8xlvs"),
+12: SubResource("Resource_twflt")
 }
-_point_order = PackedInt32Array(0, 1, 3, 13)
+_point_order = PackedInt32Array(0, 10, 11, 12)
 _constraints = {}
-_next_key = 14
+_next_key = 13
 _material_overrides = {}
 tessellation_stages = 3
 tessellation_tolerance = 6.0
@@ -135,16 +136,18 @@ size = Vector2(529.5, 20)
 
 [node name="TestScene" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("3_8qvqm")]
+[node name="Player" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("3_8qvqm")]
 z_index = 2
 position = Vector2(81, 40)
+hud = NodePath("HUD")
 
 [node name="Road" type="Area2D" parent="."]
-position = Vector2(4139, -48)
+position = Vector2(1423, -137)
 script = ExtResource("2_dcsvt")
 
 [node name="SS2D_Shape_Open" type="Node2D" parent="Road"]
 texture_repeat = 2
+position = Vector2(456, 96)
 scale = Vector2(5, 4.158)
 script = ExtResource("2_ld4al")
 _points = SubResource("Resource_aib5q")
@@ -156,7 +159,7 @@ collision_polygon_node_path = NodePath("../CollisionPolygon2D")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Road"]
 modulate = Color(1, 1, 1, 0.3)
 position = Vector2(5, 0)
-polygon = PackedVector2Array(-5251.92, -286.723, -3064.18, -306.198, -1512.2, -497.181, -1242.85, -571.422, -1031.47, -655.274, -908.241, -731.131, -854.888, -797.717, -761.938, -1099.39, -700.434, -1508.73, -607.767, -2471.65, -516.506, -2967.53, -349.297, -3427.9, -212.45, -3653.78, -36.4356, -3854.09, 188.436, -4026.09, 413.804, -4136.71, 1267.71, -4612.84, 2183.8, -5008.42, 3176.08, -5361.66, 3474.99, -4780.57, 2508.48, -4436.99, 1655.08, -4069.08, 816.304, -3600.6, 639.363, -3517.34, 531.23, -3433.85, 436.171, -3324.39, 356.509, -3193.51, 224.914, -2828.63, 147.195, -2398.99, 55.5528, -1443.87, -16.1806, -977.604, -162.461, -537.192, -352.608, -299.922, -631.927, -117.641, -958.021, 14.5315, -1336.96, 117.806, -3004.07, 323.838, -5243.48, 345.254)
+polygon = PackedVector2Array(-3884.49, -130.055, 4194.27, -144.454, 4589.74, -125.515, 4958.9, -139.292, 5381.62, -199.825, 5574.95, -249.859, 5759.92, -317.472, 5923.17, -401.553, 6060.91, -502.777, 6172.27, -624.246, 6256.79, -773.306, 6310.23, -960.472, 6323.16, -1194.55, 6250.32, -1697.85, 6100.14, -2083.78, 6013.47, -2224.9, 5921.17, -2344.51, 5709.5, -2543.81, 5510.5, -2670.74, 5346.79, -2743.92, 5164.25, -2795.37, 5412.76, -3392.64, 5652, -3322.73, 5923.64, -3201.22, 6227.97, -3005.93, 6526.38, -2726.8, 6672.51, -2539.66, 6802.98, -2324.25, 6992.64, -1833.38, 7082.65, -1217.73, 7062.7, -871.731, 6973.84, -563.872, 6822.02, -296.389, 6618.39, -73.2235, 6377.9, 104.851, 6115.05, 241.301, 5841.45, 342.027, 5559.13, 414.71, 5040.89, 489.035, 4585.49, 506.491, 4173.55, 487.328, -3882.84, 501.959)
 
 [node name="Checkpoint 1" type="Area2D" parent="."]
 position = Vector2(420, 49)
@@ -169,13 +172,18 @@ shape = SubResource("RectangleShape2D_a7mdn")
 
 [node name="Sprite2D" type="Sprite2D" parent="Checkpoint 1/CollisionShape2D"]
 
-[node name="Checkpoint 2" type="Area2D" parent="Checkpoint 1"]
-position = Vector2(420, 49)
+[node name="Checkpoint 2" type="Area2D" parent="."]
+position = Vector2(840, 98)
 script = ExtResource("13_fe5d3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint 1/Checkpoint 2"]
-position = Vector2(-585, -541)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint 2"]
+position = Vector2(-2113, -1392)
 rotation = 1.57668
 shape = SubResource("RectangleShape2D_g7da5")
 
-[node name="Sprite2D" type="Sprite2D" parent="Checkpoint 1/Checkpoint 2/CollisionShape2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Checkpoint 2/CollisionShape2D"]
+
+[node name="FinishLine" parent="." instance=ExtResource("14_gh7rt")]
+position = Vector2(7789, 1505)
+rotation = -0.390954
+scale = Vector2(3.345, 3.345)
