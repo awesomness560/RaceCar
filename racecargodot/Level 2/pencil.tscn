@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://sk6wm3ycjam0"]
+
+[ext_resource type="Texture2D" uid="uid://dpj2b4c2yupx5" path="res://Level 2/pencil.png" id="1_6bcd3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fckfs"]
+size = Vector2(50.25, 226.722)
+
+[node name="Pencil" type="Sprite2D"]
+scale = Vector2(8, -17.484)
+texture = ExtResource("1_6bcd3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-2.75, 0.171585)
+shape = SubResource("RectangleShape2D_fckfs")

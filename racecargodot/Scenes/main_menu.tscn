@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://addons/simple-gui-transitions/transition.gd" id="1_ek1il"]
 [ext_resource type="Script" path="res://Scenes/LevelSelect/level_select.gd" id="2_j2m80"]
 [ext_resource type="Script" path="res://Scenes/menu.gd" id="2_o0vf7"]
-[ext_resource type="PackedScene" uid="uid://ddtat4ss08wmg" path="res://Components/UI/level_button.tscn" id="3_hcckx"]
+[ext_resource type="PackedScene" path="res://Components/UI/level_button.tscn" id="3_hcckx"]
 [ext_resource type="Script" path="res://Scenes/leaderboard.gd" id="4_ja4qg"]
 [ext_resource type="PackedScene" uid="uid://dgygkbtm0burn" path="res://addons/quiver_leaderboards/leaderboard_ui.tscn" id="5_sudxw"]
 [ext_resource type="PackedScene" uid="uid://drwyf7qg5a8pj" path="res://Components/UI/PauseMenu/settings.tscn" id="7_pqnvf"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc3nvol5cyonk"]
+
+[ext_resource type="Texture2D" uid="uid://b868u6y7jwb0e" path="res://Level 2/science.png" id="1_sqbv0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3jya"]
+size = Vector2(250.741, 372.037)
+
+[node name="Science book" type="Sprite2D"]
+scale = Vector2(5.4, 5.4)
+texture = ExtResource("1_sqbv0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 0.277756)
+shape = SubResource("RectangleShape2D_b3jya")
