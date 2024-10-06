@@ -4,12 +4,12 @@ class_name Player
 #TODO: Need to add a bar that will stop you from boosting when you run out of boost
 
 var wheel_base = 70
-@export var steering_angle = 15
-@export var engine_power = 800 ##The speed at which you move forward
+@export var steering_angle = 10
+@export var engine_power = 400 ##The speed at which you move forward
 @export var friction = -0.9
 var drag = -0.001
 @export var braking = -450 ##The speed at which you move backward
-@export var max_speed_reversed = 250 ##The speed limiter/penalty for moving backward
+@export var max_speed_reversed = 500 ##The speed limiter/penalty for moving backward
 @export_group("Drift Settings")
 @export var slip_speed = 400 ##The speed we need to be going for us to start sliding
 @export var traction_fast = 0.1 ##The traction we have at high speeds
@@ -19,12 +19,13 @@ var drag = -0.001
 
 @export_group("Boost Settings")
 @export var boostSteeringAngle = 5 ##The limited steering angle when boosting
-@export var boostSpeed = 2000 ##The amount of power that is applied when you accelerate while boosting
+@export var boostSpeed = 3000 ##The amount of power that is applied when you accelerate while boosting
 @export var boostZoom = 0.4
 @export_subgroup("Nitro")
 @export var maxNitro = 100 ##The max amount of nitro you can hold
-@export var nitroGainRate : float = 10
-@export var nitroLoseRate : float = 15
+@export var passiveNitroGain : float = 5
+@export var nitroGainRate : float = 15
+@export var nitroLoseRate : float = 30
 
 @export_group("References")
 @export var driftParticles : GPUParticles2D
@@ -85,13 +86,14 @@ func toggleEffects(delta : float):
 	boostParticles.emitting = isBoosting
 	
 	if isDrifting and not isBoosting:
-		nitroBar.nitro += delta * nitroGainRate
+		nitroBar.nitro += delta * (nitroGainRate + passiveNitroGain)
 	
 	if isBoosting:
 		setCameraZoom(boostZoom)
 		nitroBar.nitro -= delta * nitroLoseRate
 	elif not isBoosting and camera.zoom != originalCameraZoom:
 		setCameraZoom(originalCameraZoom.x)
+		nitroBar.nitro += delta * passiveNitroGain
 
 func setCameraZoom(zoom : float) -> void:
 	if cameraTween:
