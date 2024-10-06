@@ -34,6 +34,8 @@ var drag = -0.001
 @export var nitroBar : NitroBar
 @export var hud : CanvasLayer
 @export var audioPlayer : AudioStreamPlayer2D
+@export var audioPlayerDrift : AudioStreamPlayer2D
+@export var audioPlayerNitro : AudioStreamPlayer2D
 @export var wheelNode : AnimatedSprite2D
 
 var acceleration = Vector2.ZERO

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://f3m2x66012u8"]
+[gd_scene load_steps=26 format=3 uid="uid://f3m2x66012u8"]
 
 [ext_resource type="Script" path="res://Components/Player/player.gd" id="1_q1741"]
 [ext_resource type="Texture2D" uid="uid://edq7x7pljqnf" path="res://Assets/Particles/fire_01.png" id="2_7ohmi"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://r66cif36m3h1" path="res://Assets/Car/carMain.png" id="6_hn0uy"]
 [ext_resource type="PackedScene" uid="uid://dk21ciqx436yh" path="res://Components/UI/FinishedMenu/finished_menu.tscn" id="6_wn4rj"]
 [ext_resource type="AudioStream" uid="uid://3yy6i0bpqohi" path="res://Resources/Sounds/carSound.tres" id="7_sn8bo"]
+[ext_resource type="AudioStream" uid="uid://kfhdh01rm3dn" path="res://Assets/Sounds/nitro-activation-48077-[AudioTrimmer.com].mp3" id="9_gui3k"]
+[ext_resource type="AudioStream" uid="uid://dyy2rwqpevu1g" path="res://Assets/Sounds/drift-[AudioTrimmer.com].mp3" id="10_mn3h2"]
 
 [sub_resource type="Gradient" id="Gradient_ap450"]
 offsets = PackedFloat32Array(0, 0.25, 0.618852, 1)
@@ -80,22 +82,22 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_scqa3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jo14m"]
 atlas = ExtResource("6_hn0uy")
-region = Rect2(246, 256, 100, 256)
+region = Rect2(246, 260, 100, 248)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cgfb3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7os6"]
 atlas = ExtResource("6_hn0uy")
-region = Rect2(372, 256, 100, 256)
+region = Rect2(372, 260, 100, 248)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mm5ui"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_scqa3")
+"texture": SubResource("AtlasTexture_jo14m")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cgfb3")
+"texture": SubResource("AtlasTexture_o7os6")
 }],
 "loop": true,
 "name": &"default",
@@ -105,7 +107,7 @@ animations = [{
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_lo8a5"]
 loop = false
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("driftParticles", "boostParticles", "camera", "nitroBar", "hud", "audioPlayer", "wheelNode")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("driftParticles", "boostParticles", "camera", "nitroBar", "hud", "audioPlayer", "audioPlayerDrift", "audioPlayerNitro", "wheelNode")]
 scale = Vector2(1.00643, 1)
 script = ExtResource("1_q1741")
 driftParticles = NodePath("DriftParticles")
@@ -114,6 +116,8 @@ camera = NodePath("Camera2D")
 nitroBar = NodePath("HUD/NitroBar")
 hud = NodePath("HUD")
 audioPlayer = NodePath("Audio/CarSounds")
+audioPlayerDrift = NodePath("Audio/Drift")
+audioPlayerNitro = NodePath("Audio/Nitro")
 wheelNode = NodePath("Visuals/Wheels")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -173,14 +177,14 @@ position = Vector2(15.8978, 0)
 rotation = 1.57079
 scale = Vector2(1.655, 1.655)
 sprite_frames = SubResource("SpriteFrames_dqth4")
-frame_progress = 0.0554853
+frame_progress = 0.113034
 
 [node name="Wheels" type="AnimatedSprite2D" parent="Visuals"]
 position = Vector2(117.246, 2.68301e-11)
 rotation = 1.5708
 scale = Vector2(1.575, 1.575)
 sprite_frames = SubResource("SpriteFrames_mm5ui")
-frame_progress = 0.629016
+frame_progress = 0.526462
 offset = Vector2(0, 63.415)
 
 [node name="FinishedMenu" parent="." instance=ExtResource("6_wn4rj")]
@@ -192,6 +196,12 @@ stream = SubResource("AudioStreamPlaylist_lo8a5")
 
 [node name="CarSounds" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("7_sn8bo")
+
+[node name="Nitro" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("9_gui3k")
+
+[node name="Drift" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("10_mn3h2")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
