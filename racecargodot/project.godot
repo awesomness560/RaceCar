@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="RaceCarGodot"
-run/main_scene="res://Main Menu/main_menu.tscn"
+run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://Assets/icon.svg"
 
@@ -19,6 +19,10 @@ config/icon="res://Assets/icon.svg"
 
 ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
 Global="*res://global.gd"
+Leaderboards="*res://addons/quiver_leaderboards/leaderboards.tscn"
+PlayerAccounts="*res://addons/quiver_player_accounts/player_accounts.tscn"
+GuiTransitions="*res://addons/simple-gui-transitions/singleton.gd"
+Menu="*res://Scenes/main_menu.gd"
 
 [display]
 
@@ -28,7 +32,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/controller_icons/plugin.cfg", "res://addons/rmsmartshape/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/controller_icons/plugin.cfg", "res://addons/quiver_leaderboards/plugin.cfg", "res://addons/quiver_player_accounts/plugin.cfg", "res://addons/rmsmartshape/plugin.cfg", "res://addons/simple-gui-transitions/plugin.cfg")
 
 [file_customization]
 
@@ -41,6 +45,18 @@ folder_colors={
 
 road=""
 player=""
+
+[gui_transitions]
+
+config/default/auto_start=true
+config/default/fade_layout=true
+config/default/center_pivot=true
+config/default/duration=0.5
+config/default/delay=0.5
+config/default/transition_type="QUAD"
+config/default/ease_type="IN_OUT"
+config/default/animation_enter=4
+config/default/animation_leave=4
 
 [input]
 
