@@ -33,7 +33,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/controller_icons/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/quiver_leaderboards/plugin.cfg", "res://addons/quiver_player_accounts/plugin.cfg", "res://addons/rmsmartshape/plugin.cfg", "res://addons/simple-gui-transitions/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/controller_icons/plugin.cfg", "res://addons/quiver_leaderboards/plugin.cfg", "res://addons/quiver_player_accounts/plugin.cfg", "res://addons/rmsmartshape/plugin.cfg", "res://addons/simple-gui-transitions/plugin.cfg")
 
 [file_customization]
 

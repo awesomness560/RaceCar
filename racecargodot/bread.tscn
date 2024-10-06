@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cq23wkp58sx4a"]
+
+[ext_resource type="Texture2D" uid="uid://d3pd0m36rtrm6" path="res://Assets/Bread.png" id="1_0ggsa"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Bread" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(333, 154)
+texture = ExtResource("1_0ggsa")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(333, 154)
+polygon = PackedVector2Array(-202, -92, -202, -90.3, -204, -89.2, -204, -83.6, -212, -81.6, -212, -75.6, -220, -73.6, -220, -52, -224.8, -52, -228, -48.8, -228, -43.5, -233.1, -42, -236, -42, -236, 32.8, -232.8, 36, -228, 36, -228, 40.8, -224.8, 44, -219.5, 44, -217.6, 52, -211.9, 52, -210, 105.1, -210, 108, 208.8, 108, 212, 104.8, 212, 60, 216.8, 60, 220, 56.8, 220, 52, 224.8, 52, 228, 48.8, 228, 43.4, 233.1, 42, 236, 42, 236, -40.8, 232.8, -44, 227.5, -44, 225.6, -52, 220, -52, 220, -64.8, 216.8, -68, 212, -68, 212, -72.8, 208.8, -76, 203.5, -76, 202, -81, 202, -84, 187.5, -84, 186, -89, 186, -92)
