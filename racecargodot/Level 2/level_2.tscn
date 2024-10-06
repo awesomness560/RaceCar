@@ -1,11 +1,12 @@
-[gd_scene load_steps=82 format=3 uid="uid://nuuvqgtugrpj"]
+[gd_scene load_steps=84 format=3 uid="uid://nuuvqgtugrpj"]
 
 [ext_resource type="PackedScene" uid="uid://cmo35t07oph26" path="res://road_scene.tscn" id="1_j4h4e"]
-[ext_resource type="Texture2D" uid="uid://bink52ecowsx" path="res://Level 2/wood.png" id="2_0ltgn"]
 [ext_resource type="Texture2D" uid="uid://c880ipu48xj1m" path="res://Level 2/Untitled_10-05-2024_09-32-15.png" id="2_567by"]
 [ext_resource type="Script" path="res://addons/rmsmartshape/vertex_properties.gd" id="3_42ewb"]
 [ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point.gd" id="4_no2hw"]
 [ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point_array.gd" id="5_yp73k"]
+[ext_resource type="PackedScene" uid="uid://bjoxn87chai2s" path="res://Level 2/book.tscn" id="6_3mb1h"]
+[ext_resource type="PackedScene" uid="uid://dr586vfvs747v" path="res://Level 2/eraser.tscn" id="7_syda5"]
 
 [sub_resource type="Resource" id="Resource_eixxg"]
 script = ExtResource("3_42ewb")
@@ -531,26 +532,38 @@ _points = {
 }
 _point_order = PackedInt32Array(0, 1, 2, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 129, 128, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149)
 _constraints = {}
-_next_key = 150
+_next_key = 152
 _material_overrides = {}
 tessellation_stages = 3
 tessellation_tolerance = 6.0
 curve_bake_interval = 20.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_llxmf"]
+size = Vector2(1630, 30093)
+
 [node name="Level 2" instance=ExtResource("1_j4h4e")]
 
-[node name="Backround2" type="Sprite2D" parent="." index="0"]
-position = Vector2(9145, -2421)
-scale = Vector2(7, -7.223)
+[node name="Backround3" type="Sprite2D" parent="." index="0"]
+position = Vector2(19749, -2746)
+scale = Vector2(4.0218, 4.24545)
 texture = ExtResource("2_567by")
 
-[node name="Backround" type="Sprite2D" parent="." index="1"]
-visible = false
-position = Vector2(5179, -2549)
-scale = Vector2(25, -25.795)
-texture = ExtResource("2_0ltgn")
+[node name="Backround5" type="Sprite2D" parent="." index="1"]
+position = Vector2(-12920, -2788)
+scale = Vector2(4, 4.208)
+texture = ExtResource("2_567by")
 
-[node name="Player" parent="." index="2"]
+[node name="Backround4" type="Sprite2D" parent="." index="2"]
+position = Vector2(36182, -2827)
+scale = Vector2(4, 4.208)
+texture = ExtResource("2_567by")
+
+[node name="Backround2" type="Sprite2D" parent="." index="3"]
+position = Vector2(3316, -2791)
+scale = Vector2(4, -4.127)
+texture = ExtResource("2_567by")
+
+[node name="Player" parent="." index="4"]
 position = Vector2(-2781, -2075)
 rotation = 3.14159
 
@@ -561,6 +574,58 @@ _points = SubResource("Resource_c0ihd")
 [node name="CollisionPolygon2D" parent="Road" index="1"]
 polygon = PackedVector2Array(-2540.83, -1773.45, -2777.07, -1755.23, -3035.35, -1756.62, -3322.38, -1790.14, -3489.06, -1831.82, -3650.08, -1895.84, -3804.97, -1992.7, -3936.33, -2128.52, -4021.79, -2298.01, -4049.37, -2485.72, -4022.31, -2680.1, -3947.79, -2880.09, -3838.46, -3074.01, -3700.65, -3255.7, -3390.88, -3545.87, -3028.91, -3779, -2647.32, -3954.87, -2267.67, -4080.79, -1908.78, -4162.82, -1585.56, -4205.53, -1311.23, -4210.28, -450.283, -4096.54, 323.583, -3896.74, 531.185, -3777.17, 694.271, -3650.1, 830.938, -3525.94, 1675.84, -2939.72, 1861.5, -2829.48, 2943.22, -2455.65, 3601.64, -2344.64, 5182.5, -2230.06, 6215.09, -2263.59, 8014.15, -2394.91, 9994.21, -2468.55, 12583.5, -3146.49, 12896.1, -3387.64, 13092.1, -3700.23, 13110.4, -3759.86, 13546.1, -4816.51, 15045.4, -6552.88, 16341.5, -6911.89, 17948.2, -6712.58, 19674.3, -5675.34, 20594.9, -4371.38, 21248.5, -2693.71, 21410.8, -1862.06, 21592.7, -1038.41, 22350, -407.442, 23381.9, -291.133, 24220.7, -459.347, 25249.1, -1302.91, 26960.5, -2213.08, 28334.4, -2817.06, 32867.9, -3087.97, 35314.9, -3305.3, 36549.9, -4002.69, 37459.8, -5384.89, 37573.4, -5975.86, 38322.9, -5871.48, 38177.7, -5177.25, 37111.5, -3576.93, 35578.1, -2712.36, 32936.6, -2458.54, 28545, -2209.78, 27344.5, -1667.72, 25720.7, -807.317, 24589.9, 93.1145, 23418.9, 340.135, 22009.2, 157.476, 20922.9, -739.63, 20663, -1749.65, 20509.7, -2545.73, 19901, -4113.55, 19110.8, -5251.19, 17661.2, -6127.38, 16404.9, -6282.09, 15495.9, -6043.85, 14222.4, -4528.2, 13851.8, -3621.04, 13819.9, -3518.23, 13496.1, -2999.69, 12963.5, -2599.13, 10127.8, -1846.38, 8064.96, -1764.3, 6262.91, -1632.83, 5164.1, -1598.23, 3492.36, -1719.19, 2720.08, -1851.49, 1495.14, -2275.74, 1213.64, -2438.02, 306.671, -3068.37, 153.795, -3205.77, 48.0178, -3289.32, -13.2432, -3330.18, -621.406, -3480.75, -1362.47, -3579.7, -1516.55, -3576.13, -1747.86, -3545.13, -2025.97, -3481.58, -2322.11, -3383.64, -2611.46, -3250.87, -2871.9, -3084.16, -3092.34, -2876.83, -3171.42, -2771.13, -3239.56, -2650.82, -3279.25, -2547.39, -3289.37, -2484.85, -3286.68, -2458.44, -3284.06, -2452.89, -3279.15, -2449.03, -3259.18, -2437.85, -3216.35, -2421.75, -3159.84, -2407.53, -2980.84, -2387.01, -2811.03, -2386.62, -2612.5, -2402.65)
 
-[node name="FinishLine" parent="." index="5"]
+[node name="FinishLine" parent="." index="7"]
 position = Vector2(37955, -6235)
 rotation = 0.109015
+
+[node name="Book" parent="." index="8" instance=ExtResource("6_3mb1h")]
+position = Vector2(-1882, -2271)
+rotation = 0.129989
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="9"]
+position = Vector2(-5260, -12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(-199, -2563)
+shape = SubResource("RectangleShape2D_llxmf")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="StaticBody2D" index="1"]
+position = Vector2(57390, 123)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/StaticBody2D" index="0"]
+position = Vector2(-199, -2563)
+shape = SubResource("RectangleShape2D_llxmf")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." index="10"]
+position = Vector2(18719, 4113)
+rotation = 1.5708
+scale = Vector2(1, 1.96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" index="0"]
+position = Vector2(-199, -2563)
+shape = SubResource("RectangleShape2D_llxmf")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." index="11"]
+position = Vector2(19489, -9425)
+rotation = 1.5708
+scale = Vector2(1, 2.32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" index="0"]
+position = Vector2(-199, -2563)
+shape = SubResource("RectangleShape2D_llxmf")
+
+[node name="Eraser" parent="." index="12" instance=ExtResource("7_syda5")]
+position = Vector2(961, -4454)
+rotation = -0.336667
+
+[node name="Eraser2" parent="." index="13" instance=ExtResource("7_syda5")]
+position = Vector2(16403, -5678)
+rotation = 0.242251
+
+[node name="Book2" parent="." index="14" instance=ExtResource("6_3mb1h")]
+position = Vector2(25353, -3097)
+rotation = -0.285652
+
+[node name="Eraser3" parent="." index="15" instance=ExtResource("7_syda5")]
+position = Vector2(38830, -4467)
+rotation = 0.149627
