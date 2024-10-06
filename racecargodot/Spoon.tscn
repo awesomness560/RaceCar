@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://60w5q28mehgd"]
+
+[ext_resource type="Texture2D" uid="uid://d0oi2f5bt3f2y" path="res://Assets/Spoon.png" id="1_it83g"]
+
+[node name="Spoon" type="Node2D"]
+scale = Vector2(4, 4)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Spoon" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(360, 271)
+texture = ExtResource("1_it83g")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(360, 271)
+polygon = PackedVector2Array(-2, -196, -2, -194.3, -4, -193.2, -4, -188, -8.8, -188, -12, -184.8, -12, -180, -16.8, -180, -20, -176.8, -20, -172, -24.8, -172, -28, -168.8, -28, -164, -32.8, -164, -36, -160.8, -36, -155.5, -41.1, -154, -44, -154, -44, -79.2, -40.8, -76, -36, -76, -36, -71.2, -32.8, -68, -27.5, -68, -26, -63, -26, -60, -12, -60, -12, 186, 20, 186, 20, -60, 32.8, -60, 36, -63.2, 36, -68, 40.8, -68, 44, -71.2, 44, -76.6, 49.1, -78, 52, -78, 52, -152.8, 48.8, -156, 44, -156, 44, -160.8, 40.8, -164, 36, -164, 36, -168.8, 32.8, -172, 28, -172, 28, -176.8, 24.8, -180, 20, -180, 20, -184.8, 16.8, -188, 11.5, -188, 10, -193, 10, -196)
