@@ -1,10 +1,10 @@
 [gd_scene load_steps=18 format=3 uid="uid://f3m2x66012u8"]
 
 [ext_resource type="Script" path="res://Components/Player/player.gd" id="1_q1741"]
-[ext_resource type="Texture2D" uid="uid://edq7x7pljqnf" path="res://Assets/Particles/fire_01.png" id="2_7ohmi"]
-[ext_resource type="Texture2D" uid="uid://7e16iqow768g" path="res://Assets/Particles/smoke_07.png" id="2_lssa7"]
+[ext_resource type="Texture2D" uid="uid://ci7wgm2q7oegk" path="res://Assets/Particles/fire_01.png" id="2_7ohmi"]
+[ext_resource type="Texture2D" uid="uid://d3iwbb7dj7ler" path="res://Assets/Particles/smoke_07.png" id="2_lssa7"]
 [ext_resource type="PackedScene" uid="uid://mmtt08q3veuh" path="res://Components/UI/HUD/hud.tscn" id="4_olpel"]
-[ext_resource type="Texture2D" uid="uid://fbtkc5wt40t4" path="res://Components/Player/player.png" id="5_j8leq"]
+[ext_resource type="Texture2D" uid="uid://c3f2rp0nqn481" path="res://Components/Player/player.png" id="5_j8leq"]
 [ext_resource type="PackedScene" uid="uid://dk21ciqx436yh" path="res://Components/UI/FinishedMenu/finished_menu.tscn" id="6_wn4rj"]
 [ext_resource type="AudioStream" uid="uid://3yy6i0bpqohi" path="res://Resources/Sounds/carSound.tres" id="7_epnhl"]
 
