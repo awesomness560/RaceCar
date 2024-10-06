@@ -52,15 +52,15 @@ var isBoosting : bool = false
 var canBoost : bool = true
 
 func _ready() -> void:
-	#carSounds = audioPlayer.stream 
-	#audioPlayer.play()
-	#print(audioPlayer.stream)
+	carSounds = audioPlayer.stream 
+	audioPlayer.play()
+	print(audioPlayer.stream)
 	originalCameraZoom = camera.zoom
 	nitroBar.initNitro(maxNitro)
 	Global.finished.connect(onFinish)
 
 func _physics_process(delta : float) -> void:
-	#currentSound = audioPlayer["parameters/switch_to_clip"]
+	currentSound = audioPlayer["parameters/switch_to_clip"]
 	acceleration = Vector2.ZERO
 	get_input()
 	apply_friction()
@@ -80,15 +80,15 @@ func get_input():
 		steer_direction = turn * deg_to_rad(boostSteeringAngle)
 	
 	if Input.is_action_pressed("accelerate"):
-		#if currentSound != "forward":
-			#audioPlayer["parameters/switch_to_clip"] = "forward"
+		if currentSound != "forward":
+			audioPlayer["parameters/switch_to_clip"] = "forward"
 		acceleration = transform.x * (engine_power - currentSpeedPenalty)
 		
 		if isBoosting:
 			acceleration = transform.x * boostSpeed
 	if Input.is_action_pressed("reverse"):
-		#if currentSound != "back":
-			#audioPlayer["parameters/switch_to_clip"] = "back"
+		if currentSound != "back":
+			audioPlayer["parameters/switch_to_clip"] = "back"
 		acceleration = transform.x * braking
 	
 	isDrifting = Input.is_action_pressed("drift")
