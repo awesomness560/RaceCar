@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cmo35t07oph26"]
+[gd_scene load_steps=32 format=3 uid="uid://cmo35t07oph26"]
 
 [ext_resource type="Script" path="res://Components/Road/road.gd" id="2_dcsvt"]
 [ext_resource type="Script" path="res://addons/rmsmartshape/shapes/shape_open.gd" id="2_ld4al"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://addons/rmsmartshape/materials/shape_material.gd" id="10_kov01"]
 [ext_resource type="Script" path="res://checkpoint_1.gd" id="12_j2dih"]
 [ext_resource type="Script" path="res://checkpoint_2.gd" id="13_fe5d3"]
+[ext_resource type="PackedScene" uid="uid://ddrbgbmaer2lu" path="res://Components/Roads/finish_line.tscn" id="14_vq4o7"]
 
 [sub_resource type="Resource" id="Resource_30uy8"]
 script = ExtResource("3_rt7md")
@@ -193,3 +194,6 @@ rotation = 1.57668
 shape = SubResource("RectangleShape2D_g7da5")
 
 [node name="Sprite2D" type="Sprite2D" parent="Checkpoint 1/Checkpoint 2/CollisionShape2D"]
+
+[node name="FinishLine" parent="." instance=ExtResource("14_vq4o7")]
+position = Vector2(4372, -343)

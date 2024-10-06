@@ -104,9 +104,6 @@ shape = SubResource("CapsuleShape2D_6fnhn")
 
 [node name="HUD" parent="." instance=ExtResource("4_olpel")]
 
-[node name="PauseMenu" parent="HUD" index="0"]
-visible = true
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
 texture = ExtResource("5_j8leq")
