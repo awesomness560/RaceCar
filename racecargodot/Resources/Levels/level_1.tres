@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Level" load_steps=4 format=3 uid="uid://ccecgtar50q2p"]
+
+[ext_resource type="Texture2D" uid="uid://caroh1dsw8m7o" path="res://Assets/icon2.png" id="1_546xr"]
+[ext_resource type="PackedScene" uid="uid://cqp50fh2r6ssg" path="res://level_1.tscn" id="2_0nggn"]
+[ext_resource type="Script" path="res://Resources/level.gd" id="3_483ji"]
+
+[resource]
+script = ExtResource("3_483ji")
+levelName = "THE KITCHEN LVL 1"
+levelImage = ExtResource("1_546xr")
+levelScene = ExtResource("2_0nggn")
+leaderboardID = "racecar-level1-kujT"
