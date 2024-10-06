@@ -33,6 +33,8 @@ var drag = -0.001
 @export var camera : Camera2D
 @export var nitroBar : NitroBar
 @export var hud : CanvasLayer
+@export var audioPlayer : AudioStreamPlayer2D
+@export var turnNode : Node2D
 
 var acceleration = Vector2.ZERO
 var steer_direction
@@ -42,17 +44,23 @@ var currentSpeedPenalty : float = 0
 
 var originalCameraZoom : Vector2
 var cameraTween : Tween
+var carSounds : AudioStreamInteractive
+var currentSound : String
 
 var isDrifting : bool = false
 var isBoosting : bool = false
 var canBoost : bool = true
 
 func _ready() -> void:
+	carSounds = audioPlayer.stream 
+	audioPlayer.play()
+	print(audioPlayer.stream)
 	originalCameraZoom = camera.zoom
 	nitroBar.initNitro(maxNitro)
 	Global.finished.connect(onFinish)
 
 func _physics_process(delta : float) -> void:
+	currentSound = audioPlayer["parameters/switch_to_clip"]
 	acceleration = Vector2.ZERO
 	get_input()
 	apply_friction()
@@ -72,16 +80,24 @@ func get_input():
 		steer_direction = turn * deg_to_rad(boostSteeringAngle)
 	
 	if Input.is_action_pressed("accelerate"):
+		if currentSound != "forward":
+			audioPlayer["parameters/switch_to_clip"] = "forward"
 		acceleration = transform.x * (engine_power - currentSpeedPenalty)
 		
 		if isBoosting:
 			acceleration = transform.x * boostSpeed
 	if Input.is_action_pressed("reverse"):
+		if currentSound != "back":
+			audioPlayer["parameters/switch_to_clip"] = "back"
 		acceleration = transform.x * braking
 	
 	isDrifting = Input.is_action_pressed("drift")
 
 func toggleEffects(delta : float):
+	var camOffset : Vector2 = camera.offset.lerp(velocity, delta * 1)
+	camOffset.x = clampf(camOffset.x, -500, 500)
+	camOffset.y = clampf(camOffset.y, -500, 500)
+	camera.offset = camOffset
 	driftParticles.emitting = isDrifting
 	boostParticles.emitting = isBoosting
 	
