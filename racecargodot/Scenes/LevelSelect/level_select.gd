@@ -34,7 +34,7 @@ func dir_levels(path : String):
 			if dir.current_is_dir():
 				pass
 			else:
-				levelResources.append(load(path + file_name))
+				levelResources.append(load((path + file_name).trim_suffix(".remap")))
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.")

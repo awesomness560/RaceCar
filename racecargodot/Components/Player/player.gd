@@ -20,7 +20,7 @@ var drag = -0.001
 @export_group("Boost Settings")
 @export var boostSteeringAngle = 1 ##The limited steering angle when boosting
 @export var boostSpeed = 3000 ##The amount of power that is applied when you accelerate while boosting
-@export var boostZoom = 0.4
+@export var boostZoom = 0.2
 @export_subgroup("Nitro")
 @export var maxNitro = 100 ##The max amount of nitro you can hold
 @export var passiveNitroGain : float = 5
@@ -34,7 +34,9 @@ var drag = -0.001
 @export var nitroBar : NitroBar
 @export var hud : CanvasLayer
 @export var audioPlayer : AudioStreamPlayer2D
-@export var turnNode : Node2D
+@export var audioPlayerDrift : AudioStreamPlayer2D
+@export var audioPlayerNitro : AudioStreamPlayer2D
+@export var wheelNode : AnimatedSprite2D
 
 var acceleration = Vector2.ZERO
 var steer_direction
@@ -75,6 +77,14 @@ func get_input():
 	isBoosting = Input.is_action_pressed("boost") and canBoost
 	
 	var turn = Input.get_action_strength("steer_right") - Input.get_action_strength("steer_left")
+	
+	if turn > 0:
+		wheelNode.rotation_degrees = 95
+	elif turn < 0:
+		wheelNode.rotation_degrees = 85
+	else:
+		wheelNode.rotation_degrees = 90
+	
 	steer_direction = turn * deg_to_rad(steering_angle)
 	if isBoosting:
 		steer_direction = turn * deg_to_rad(boostSteeringAngle)
@@ -94,10 +104,6 @@ func get_input():
 	isDrifting = Input.is_action_pressed("drift")
 
 func toggleEffects(delta : float):
-	var camOffset : Vector2 = camera.offset.lerp(velocity, delta * 1)
-	camOffset.x = clampf(camOffset.x, -500, 500)
-	camOffset.y = clampf(camOffset.y, -500, 500)
-	camera.offset = camOffset
 	driftParticles.emitting = isDrifting
 	boostParticles.emitting = isBoosting
 	
